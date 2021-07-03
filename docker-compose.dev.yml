@@ -12,4 +12,11 @@ services:
       - ./.env
     environment:
       - NODE_ENV=development
+      - MONGO_USER=mevo
+      - MONGO_PASSWORD=mypassword
     command: npm run dev
+  mongo:
+    image: mongo
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=mevo
+      - MONGO_INITDB_ROOT_PASSWORD=mypassword
