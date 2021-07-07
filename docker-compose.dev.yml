@@ -1,5 +1,8 @@
 version: "3"
 services:
+    nginx:
+        ports:
+            - "3000:80"
     node-app:
         build:
             context: .
@@ -8,12 +11,11 @@ services:
         volumes:
             - ./:/app
             - /app/node_modules
-        env_file:
-            - ./.env
         environment:
             - NODE_ENV=development
             - MONGO_USER=mevo
             - MONGO_PASSWORD=mypassword
+            - SESSION_SECRET=secret
         command: npm run dev
     mongo:
         image: mongo
